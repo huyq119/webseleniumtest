@@ -31,6 +31,9 @@ class BasePage():
         self.driver.get("https://work.weixin.qq.com/wework_admin/frame#index")
         sleep(3)
 
+    def find(self, by, value):
+        return self.driver.find_element(by=by, value=value)
+
     # def teardown(self):
     #     pass
     #     # self.driver.quit()
