@@ -8,9 +8,9 @@ from selenium.webdriver.remote.webdriver import WebDriver
 
 class BasePage():
 
-    def __init__(self, base_driver=None):
-        base_driver: WebDriver
-        if base_driver is None:
+    def __init__(self, _base_driver=None):
+        _base_driver: WebDriver
+        if _base_driver is None:
             option = webdriver.ChromeOptions()
             option.add_experimental_option("w3c", False)
             self._driver = webdriver.Chrome("/Users/huyuqi/software/chromedriver", options=option)
@@ -19,12 +19,12 @@ class BasePage():
             self._driver.implicitly_wait(5)
             self._cookie_login()
         else:
-            self._driver = base_driver
+            self._driver = _base_driver
         # self.vars = {}
 
     def _cookie_login(self):
         self._driver.get("https://work.weixin.qq.com")
-        with open("/Users/huyuqi/PycharmProjects/webseleniumtest/test_po/page/cookie.json", "r") as f:
+        with open(f"../page/cookie.json", "r") as f:
             cookies = json.load(f)
         for cookie in cookies:
             self._driver.add_cookie(cookie)
