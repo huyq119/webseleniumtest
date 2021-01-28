@@ -14,7 +14,7 @@ class ContactPage(BasePage):
     def goto_add_department(self):
         self.find(By.CSS_SELECTOR, ".member_colLeft_top_addBtn").click()
         self.find(By.CSS_SELECTOR, ".js_create_party").click()
-        return AddDepartmentPage(self.driver)
+        return AddDepartmentPage(self._driver)
 
     def goto_import_list(self):
         pass
@@ -24,7 +24,7 @@ class ContactPage(BasePage):
         返回通讯录页面的人员信息
         :return:
         """
-        name_webelement_list = self.driver.find_elements(By.CSS_SELECTOR, ".member_colRight_memberTable_td:nth-child(2)")
+        name_webelement_list = self._driver.find_elements(By.CSS_SELECTOR, ".member_colRight_memberTable_td:nth-child(2)")
         name_list = []
         for webelement in name_webelement_list:
             name_list.append(webelement.text)

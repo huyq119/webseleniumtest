@@ -15,11 +15,11 @@ class MainPage(BasePage):
 
     def goto_contact(self):
         self.find(By.CSS_SELECTOR, "#menu_contacts .frame_nav_item_title").click()
-        return ContactPage(self.driver)
+        return ContactPage(self._driver)
 
     def goto_add_member(self):
         self.find(By.CSS_SELECTOR, ".ww_indexImg_AddMember").click()
-        return AddMemberPage(self.driver)
+        return AddMemberPage(self._driver)
 
     def goto_import_list(self):
         pass

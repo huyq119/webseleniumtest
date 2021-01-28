@@ -7,7 +7,7 @@ class DepartmentPage(BasePage):
 
     def get_department_name(self):
         """
-        确认新建部门名称正确
+        返回当前部门名称，进行判断
         :return:
         """
         party_name = self.find(By.CSS_SELECTOR, ".ww_commonCntHead_title_inner_text #party_name").text

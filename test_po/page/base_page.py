@@ -13,26 +13,26 @@ class BasePage():
         if base_driver is None:
             option = webdriver.ChromeOptions()
             option.add_experimental_option("w3c", False)
-            self.driver = webdriver.Chrome("/Users/huyuqi/software/chromedriver", options=option)
+            self._driver = webdriver.Chrome("/Users/huyuqi/software/chromedriver", options=option)
             # env = os.getenv("browser")
-            self.driver.maximize_window()
-            self.driver.implicitly_wait(5)
+            self._driver.maximize_window()
+            self._driver.implicitly_wait(5)
             self._cookie_login()
         else:
-            self.driver = base_driver
+            self._driver = base_driver
         # self.vars = {}
 
     def _cookie_login(self):
-        self.driver.get("https://work.weixin.qq.com")
+        self._driver.get("https://work.weixin.qq.com")
         with open("/Users/huyuqi/PycharmProjects/webseleniumtest/test_po/page/cookie.json", "r") as f:
             cookies = json.load(f)
         for cookie in cookies:
-            self.driver.add_cookie(cookie)
-        self.driver.get("https://work.weixin.qq.com/wework_admin/frame#index")
+            self._driver.add_cookie(cookie)
+        self._driver.get("https://work.weixin.qq.com/wework_admin/frame#index")
         sleep(3)
 
     def find(self, by, value):
-        return self.driver.find_element(by=by, value=value)
+        return self._driver.find_element(by=by, value=value)
 
     # def teardown(self):
     #     pass
